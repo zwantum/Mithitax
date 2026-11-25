@@ -4,26 +4,27 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://mithitax.com"),
   title: {
-    default: "Mithi Tax | Business Setup, Accounting, GST & Tax Compliance",
+    default: "Mithi Tax | Tax Consultant, GST & Company Registration Services",
     template: "%s | Mithi Tax",
   },
   description:
-    "End-to-end corporate financial and legal consultancy. Business registration, accounting, income tax records, GST compliance, and regulatory licensing under one roof.",
+    "Get expert support for GST registration, company incorporation, income tax filing, accounting, bookkeeping and legal compliance with Mithi Tax in Darbhanga, Bihar.",
   keywords: [
-    "Mithi Tax",
-    "Company Registration India",
-    "GST Filing Services",
-    "Income Tax Consultancy",
-    "Accounting and Bookkeeping",
-    "LLP Registration",
-    "Tax Compliance India",
-    "Corporate Compliance",
+    "Tax, Accounting & Legal Compliance Services",
+    "GST Registration Services",
+    "Company Registration in India",
+    "Income Tax Filing Services",
+    "Accounting and Bookkeeping Services",
+    "Business Registration Consultancy",
+    "Tax Consultant in Darbhanga",
+    "GST Consultant in Bihar",
+    "Business Compliance Services",
   ],
   authors: [{ name: "Mithi Tax Advisory" }],
   openGraph: {
-    title: "Mithi Tax — Simplifying Business. Strengthening Financial Confidence.",
+    title: "Mithi Tax | Tax Consultant, GST & Company Registration Services",
     description:
-      "Expert corporate and tax consulting for startups, SMEs, and entrepreneurs across India.",
+      "Get expert support for GST registration, company incorporation, income tax filing, accounting, bookkeeping and legal compliance with Mithi Tax in Darbhanga, Bihar.",
     url: "https://mithitax.com",
     siteName: "Mithi Tax",
     locale: "en_IN",
@@ -31,8 +32,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mithi Tax — Simplifying Business. Strengthening Financial Confidence.",
-    description: "End-to-end support for business setup, accounting, taxation and regulatory compliance.",
+    title: "Mithi Tax | Tax Consultant, GST & Company Registration Services",
+    description:
+      "Get expert support for GST registration, company incorporation, income tax filing, accounting, bookkeeping and legal compliance with Mithi Tax in Darbhanga, Bihar.",
   },
   robots: {
     index: true,

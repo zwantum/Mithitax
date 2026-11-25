@@ -7,18 +7,18 @@ export default function AboutSection() {
   const trustPoints = [
     {
       icon: ShieldCheck,
-      title: "Experienced and Qualified Professionals",
-      description: "Chartered Accountants, CS, and corporate advocates guiding your statutory compliance.",
+      title: "Experienced Professionals",
+      description: "Professional guidance for business registration, taxation, accounting and compliance requirements.",
     },
     {
       icon: FileCheck,
-      title: "End-to-End Business and Tax Solutions",
-      description: "From initial incorporation to monthly GST filings and annual corporate audits.",
+      title: "End-to-End Business Solutions",
+      description: "From business incorporation to annual compliance, access multiple essential services under one roof.",
     },
     {
       icon: BadgeCheck,
-      title: "Client-Focused and Transparent Approach",
-      description: "Clear fixed pricing, zero hidden clauses, and proactive regulatory reminders.",
+      title: "Client-Focused Approach",
+      description: "Clear communication, personalized assistance and solutions based on your business requirements.",
     },
   ];
 
@@ -60,9 +60,13 @@ export default function AboutSection() {
               Expert Guidance for Every Stage of Business
             </h2>
 
-            <p className="text-sm sm:text-[0.9375rem] text-brand-muted leading-relaxed font-normal mb-7">
-              Mithi Tax is a professional financial and compliance consultancy helping businesses, startups and individuals manage their legal, accounting and taxation requirements with confidence.
-            </p>
+            <div className="text-sm sm:text-[0.9375rem] text-brand-muted leading-relaxed font-normal mb-7 space-y-3">
+              <p>
+                Mithi Tax is a professional business, taxation and compliance consultancy dedicated to helping entrepreneurs, startups, individuals and established businesses manage their financial and legal responsibilities.
+              </p>
+
+
+            </div>
 
             {/* Three Trust Points with Clean Primary Icon Badges (No secondary color, no text hover animation) */}
             <div className="space-y-4 sm:space-y-4.5 mb-8 w-full">

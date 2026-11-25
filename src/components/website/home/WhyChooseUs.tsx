@@ -32,9 +32,12 @@ export default function WhyChooseUs() {
       <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header: Clean sans-serif typography with deep navy */}
         <div className="max-w-3xl mb-10 md:mb-12">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[2rem] font-semibold text-brand-text tracking-tight leading-snug">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[2rem] font-semibold text-brand-text tracking-tight leading-snug mb-3">
             A More Reliable Way to Manage Your Business Compliance
           </h2>
+          <p className="text-sm sm:text-[0.9375rem] text-brand-muted leading-relaxed font-normal">
+            Managing business registrations, taxation and financial compliance doesn&apos;t have to be complicated. Mithi Tax brings essential professional services together to make your business journey simpler.
+          </p>
         </div>
 
         {/* 3-column × 3-row layout containing nine feature cards */}

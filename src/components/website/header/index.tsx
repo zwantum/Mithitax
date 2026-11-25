@@ -118,47 +118,41 @@ export default function Header() {
 
               {/* Mega Dropdown Menu */}
               {servicesDropdownOpen && (
-                <div className="absolute top-full -left-20 w-[640px] bg-white rounded-2xl shadow-dropdown border border-brand-border p-5 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="grid grid-cols-2 gap-3">
+                <div className="absolute top-full -left-64 w-[1060px] max-w-[95vw] bg-white rounded-2xl shadow-[0_24px_60px_rgba(23,21,45,0.14)] border border-slate-200/90 p-7 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                  {/* 5-Column Services Directory Grid */}
+                  <div className="grid grid-cols-5 gap-6">
                     {serviceCategories.map((cat) => {
                       const Icon =
                         categoryIcons[cat.id as keyof typeof categoryIcons] || Building2;
                       return (
-                        <Link
-                          key={cat.id}
-                          href={`/services/category/${cat.slug}`}
-                          className="flex items-start gap-3 p-3 rounded-xl hover:bg-brand-alt transition-colors group"
-                        >
-                          <div className="w-9 h-9 rounded-lg bg-brand-purple-subtle flex items-center justify-center text-brand-purple flex-shrink-0 group-hover:scale-105 transition-transform">
-                            <Icon className="w-4 h-4" strokeWidth={1.75} />
-                          </div>
-                          <div>
-                            <div className="text-sm font-semibold text-brand-text group-hover:text-brand-purple transition-colors flex items-center gap-1.5">
-                              <span>{cat.title}</span>
-                              <span className="text-[10px] font-normal text-brand-muted px-1.5 py-0.5 rounded-full bg-brand-alt border border-brand-border">
-                                {cat.count}
-                              </span>
+                        <div key={cat.id} className="flex flex-col">
+                          {/* Category Header Label (Not a link) */}
+                          <div className="flex items-center gap-2 pb-3 mb-3 border-b border-slate-100">
+                            <div className="w-7 h-7 rounded-lg bg-brand-purple-subtle flex items-center justify-center text-brand-purple flex-shrink-0">
+                              <Icon className="w-3.5 h-3.5" strokeWidth={2} />
                             </div>
-                            <p className="text-xs text-brand-muted mt-0.5 line-clamp-1">
-                              {cat.description}
-                            </p>
+                            <span className="text-[13px] font-bold text-brand-text leading-snug">
+                              {cat.title}
+                            </span>
                           </div>
-                        </Link>
+
+                          {/* Sub-services List: Spacious & Legible */}
+                          <ul className="space-y-2 flex-1">
+                            {cat.services.map((srv) => (
+                              <li key={srv.slug}>
+                                <Link
+                                  href={`/services/${srv.slug}`}
+                                  className="text-[13px] text-slate-600 hover:text-brand-purple hover:translate-x-1 transition-all block leading-snug py-1 px-1 rounded-md hover:bg-brand-purple-subtle/30"
+                                  title={srv.title}
+                                >
+                                  {srv.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       );
                     })}
-                  </div>
-
-                  <div className="mt-4 pt-3 border-t border-brand-border flex items-center justify-between px-2">
-                    <span className="text-xs text-brand-muted">
-                      Need custom corporate advisory or registrations?
-                    </span>
-                    <Link
-                      href="/services"
-                      className="text-xs font-semibold text-brand-purple hover:underline inline-flex items-center gap-1"
-                    >
-                      <span>View All Categories</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </Link>
                   </div>
                 </div>
               )}
@@ -197,16 +191,6 @@ export default function Header() {
 
           {/* Right Desktop CTA */}
           <div className="hidden lg:flex items-center gap-5">
-            <a
-              href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
-              className="flex items-center gap-2 text-xs font-medium text-brand-muted hover:text-brand-purple transition-colors"
-            >
-              <div className="w-7 h-7 rounded-full bg-brand-alt border border-brand-border flex items-center justify-center text-brand-text">
-                <Phone className="w-3.5 h-3.5 text-brand-purple" />
-              </div>
-              <span>{siteConfig.phone}</span>
-            </a>
-
             <Button
               href="/contact"
               variant="lime"
@@ -276,24 +260,33 @@ export default function Header() {
                   />
                 </button>
                 {mobileServicesOpen && (
-                  <div className="pl-4 pr-2 py-2 flex flex-col gap-2 bg-brand-alt/60 rounded-xl my-1 border border-brand-border/60">
+                  <div className="pl-3 pr-2 py-2 flex flex-col gap-3 bg-brand-alt/60 rounded-xl my-1 border border-brand-border/60">
                     {serviceCategories.map((cat) => (
-                      <Link
-                        key={cat.id}
-                        href={`/services/category/${cat.slug}`}
-                        className="py-1.5 px-2 text-xs font-medium text-brand-muted hover:text-brand-purple flex items-center justify-between"
-                      >
-                        <span>{cat.title}</span>
-                        <span className="text-[10px] text-brand-muted bg-white px-2 py-0.5 rounded-full border border-brand-border">
-                          {cat.count}
-                        </span>
-                      </Link>
+                      <div key={cat.id} className="space-y-1">
+                        <div className="py-1 px-2 text-xs font-bold text-brand-text flex items-center justify-between">
+                          <span>{cat.title}</span>
+                          <span className="text-[10px] text-brand-purple bg-brand-purple-subtle px-1.5 py-0.5 rounded-full font-semibold">
+                            {cat.count}
+                          </span>
+                        </div>
+                        <div className="pl-3 flex flex-col gap-1 border-l border-brand-border/80 ml-2">
+                          {cat.services.map((srv) => (
+                            <Link
+                              key={srv.slug}
+                              href={`/services/${srv.slug}`}
+                              className="text-[11px] text-brand-muted hover:text-brand-purple py-0.5"
+                            >
+                              {srv.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     ))}
                     <Link
                       href="/services"
-                      className="py-1.5 px-2 text-xs font-semibold text-brand-purple border-t border-brand-border/60 pt-2"
+                      className="py-1.5 px-2 text-xs font-semibold text-brand-purple border-t border-brand-border/60 pt-2 flex items-center justify-between"
                     >
-                      View All Services →
+                      <span>View All Services Directory →</span>
                     </Link>
                   </div>
                 )}

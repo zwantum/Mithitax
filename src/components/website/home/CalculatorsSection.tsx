@@ -16,42 +16,42 @@ const calculators = [
   {
     id: "gst-calculator",
     title: "GST Calculator",
-    subtitle: "Inclusive & Exclusive Slabs",
+    subtitle: "Calculate GST amounts, tax components and total invoice values quickly.",
     category: "Goods & Services Tax",
     icon: Calculator,
   },
   {
     id: "income-tax-calculator",
     title: "Income Tax Calculator",
-    subtitle: "New Tax Regime FY 2024-25",
+    subtitle: "Estimate your income tax liability based on income and chosen tax regime.",
     category: "Direct Taxation",
     icon: Receipt,
   },
   {
     id: "tds-calculator",
     title: "TDS Calculator",
-    subtitle: "Sections 194J, 194I, 194C, 194H",
+    subtitle: "Calculate applicable TDS deductions and estimated payable amounts easily.",
     category: "Withholding Tax",
     icon: Percent,
   },
   {
     id: "hra-calculator",
     title: "HRA Exemption Calculator",
-    subtitle: "Section 10(13A) Tax Saving",
+    subtitle: "Estimate your House Rent Allowance exemption based on salary and rent paid.",
     category: "Salary & Deductions",
     icon: Home,
   },
   {
     id: "startup-incorporation-calculator",
     title: "Startup Incorporation Cost",
-    subtitle: "Pvt Ltd, LLP, OPC Setup Fees",
+    subtitle: "Estimate incorporation expenses based on your chosen business structure.",
     category: "Business Setup",
     icon: Building2,
   },
   {
     id: "gratuity-calculator",
     title: "Gratuity Calculator",
-    subtitle: "15/26 Statutory Formula",
+    subtitle: "Estimate gratuity benefits based on salary and eligible years of service.",
     category: "Labor & Payroll",
     icon: Wallet,
   },
@@ -159,12 +159,12 @@ export default function CalculatorsSection() {
           </h2>
 
           <p className="text-sm sm:text-[0.9375rem] text-brand-muted leading-relaxed font-normal">
-            Quick and easy interactive calculators to estimate taxes, compliance costs and statutory benefits.
+            Use our free online business and tax calculators to estimate taxes, understand financial obligations and make more informed business decisions.
           </p>
         </div>
 
         {/* 6 Interactive Calculator Cards Grid (3-column × 2-row) with elevated SaaS card depth */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto mb-10">
           {calculators.map((calc) => {
             const Icon = calc.icon;
             return (
@@ -172,28 +172,39 @@ export default function CalculatorsSection() {
                 key={calc.id}
                 type="button"
                 onClick={() => setActiveModal(calc.id)}
-                className="group flex items-center justify-between p-5 sm:p-6 bg-gradient-to-b from-white to-[#FAF9FD] rounded-2xl border border-slate-200/90 shadow-[0_4px_16px_rgba(23,21,45,0.03)] hover:shadow-[0_16px_36px_-6px_rgba(113,10,198,0.12),0_4px_12px_rgba(23,21,45,0.04)] transition-all duration-300 text-left cursor-pointer"
+                className="group flex items-start justify-between p-5 sm:p-6 bg-gradient-to-b from-white to-[#FAF9FD] rounded-2xl border border-slate-200/90 shadow-[0_4px_16px_rgba(23,21,45,0.03)] hover:shadow-[0_16px_36px_-6px_rgba(113,10,198,0.12),0_4px_12px_rgba(23,21,45,0.04)] transition-all duration-300 text-left cursor-pointer h-full"
               >
-                <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-xl bg-brand-purple-light/80 border border-brand-purple/15 flex items-center justify-center text-brand-purple transition-all duration-300 group-hover:bg-brand-purple group-hover:text-white group-hover:shadow-[0_4px_12px_rgba(113,10,198,0.25)] group-hover:scale-105">
-                    <Icon className="w-5 h-5 transition-transform duration-300" strokeWidth={1.8} />
+                <div className="flex items-start gap-3.5 sm:gap-4 flex-1 min-w-0 pr-2 sm:pr-3">
+                  <div className="w-11 h-11 min-w-[2.75rem] min-h-[2.75rem] rounded-xl bg-brand-purple-light/80 border border-brand-purple/15 flex items-center justify-center text-brand-purple transition-all duration-300 group-hover:bg-brand-purple group-hover:text-white group-hover:shadow-[0_4px_12px_rgba(113,10,198,0.25)] group-hover:scale-105 flex-shrink-0 mt-0.5">
+                    <Icon className="w-5 h-5 flex-shrink-0 transition-transform duration-300" strokeWidth={1.8} />
                   </div>
-                  <div>
-                    <h3 className="text-[1.05rem] font-semibold text-brand-text group-hover:text-brand-purple transition-colors leading-snug">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-sm sm:text-[1.05rem] font-semibold text-brand-text group-hover:text-brand-purple transition-colors leading-snug">
                       {calc.title}
                     </h3>
-                    <span className="text-xs text-brand-muted font-normal block mt-0.5">
+                    <p className="text-xs text-brand-muted font-normal mt-1 leading-relaxed">
                       {calc.subtitle}
-                    </span>
+                    </p>
                   </div>
                 </div>
 
-                <div className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-brand-lime group-hover:text-brand-text transition-all duration-300 flex-shrink-0">
+                <div className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-brand-lime group-hover:text-brand-text transition-all duration-300 flex-shrink-0 mt-0.5">
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" strokeWidth={2.2} />
                 </div>
               </button>
             );
           })}
+        </div>
+
+        {/* Explore All Calculators CTA */}
+        <div className="text-center">
+          <a
+            href="/calculators"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-lime text-brand-text font-semibold text-sm hover:bg-[#a6d812] shadow-sm hover:shadow transition-all"
+          >
+            <span>Explore All Calculators</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
 
         {/* 1. GST Interactive Modal */}

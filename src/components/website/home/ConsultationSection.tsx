@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   Loader2,
   Send,
+  ArrowRight,
 } from "lucide-react";
 import { consultationSchema, ConsultationFormValues } from "@/lib/validations";
 import { serviceCategories, siteConfig } from "@/lib/constants";
@@ -57,7 +58,7 @@ export default function ConsultationSection() {
   };
 
   return (
-    <section id="consultation" className="py-12 md:py-20 bg-white relative overflow-hidden">
+    <section id="consultation" className="pt-4 pb-12 sm:pt-10 sm:pb-16 md:py-20 bg-white relative overflow-hidden">
       {/* Subtle Ambient Background Orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
@@ -85,11 +86,11 @@ export default function ConsultationSection() {
             <div className="lg:col-span-5 flex flex-col justify-between">
               <div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-brand-text tracking-tight leading-snug mb-4">
-                  Let’s Get Your Finances & Taxes Sorted
+                  Let’s Get Your Finances &amp; Taxes Sorted
                 </h2>
 
                 <p className="text-sm sm:text-base text-brand-muted leading-relaxed mb-8">
-                  Connect with our expert team for business registration, taxation, accounting and compliance support. We review your entity structure and recommend the right statutory pathway.
+                  Connect with our team for assistance with business registration, GST, income tax, accounting and legal compliance. Share your requirements and get guidance on the right solutions for your business.
                 </p>
 
                 {/* Contact Rows */}
@@ -100,8 +101,9 @@ export default function ConsultationSection() {
                     </div>
                     <div>
                       <div className="text-xs font-semibold text-brand-muted uppercase tracking-wider">
-                        Phone / Direct Consultation
+                        Direct Consultation
                       </div>
+
                       <a
                         href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
                         className="text-sm font-semibold text-brand-text hover:text-brand-purple transition-colors mt-0.5 inline-block"
@@ -117,8 +119,9 @@ export default function ConsultationSection() {
                     </div>
                     <div>
                       <div className="text-xs font-semibold text-brand-muted uppercase tracking-wider">
-                        Email / Document Enquiries
+                        Email Support
                       </div>
+
                       <a
                         href={`mailto:${siteConfig.email}`}
                         className="text-sm font-semibold text-brand-text hover:text-brand-purple transition-colors mt-0.5 inline-block"
@@ -136,6 +139,7 @@ export default function ConsultationSection() {
                       <div className="text-xs font-semibold text-brand-muted uppercase tracking-wider">
                         Office Location
                       </div>
+
                       <p className="text-sm font-semibold text-brand-text mt-0.5">
                         {siteConfig.address}
                       </p>
@@ -149,10 +153,10 @@ export default function ConsultationSection() {
             <div className="lg:col-span-7 bg-gradient-to-b from-[#F9F9FE] to-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-sm">
               <div className="mb-6">
                 <h3 className="text-xl sm:text-2xl font-semibold text-brand-text tracking-tight">
-                  Request Free Consultation
+                  Request a Free Consultation
                 </h3>
                 <p className="text-xs sm:text-sm text-brand-muted mt-1.5">
-                  Fill out your details below. Our team will review your enquiry and get in touch within one business day.
+                  Fill out the form below. Share your requirements and our team will get in touch to discuss the appropriate services and next steps.
                 </p>
               </div>
 
@@ -162,10 +166,10 @@ export default function ConsultationSection() {
                     <CheckCircle2 className="w-8 h-8 text-brand-purple" />
                   </div>
                   <h4 className="text-xl sm:text-2xl font-semibold text-brand-text mb-2">
-                    Enquiry Received Successfully!
+                    Inquiry Submitted Successfully!
                   </h4>
                   <p className="text-sm text-brand-muted max-w-md mx-auto mb-6">
-                    Thank you for reaching out to Mithi Tax. One of our senior compliance officers will review your requirements and connect with you shortly.
+                    Thank you for contacting Mithi Tax! Your enquiry has been submitted successfully. Our team will review your requirements and contact you soon.
                   </p>
                   <button
                     type="button"
@@ -215,20 +219,26 @@ export default function ConsultationSection() {
                   </div>
 
                   <Select
-                    label="Select Required Service"
+                    label="Select Service"
                     required
                     error={errors.serviceCategory?.message}
                     {...register("serviceCategory")}
                   >
-                    <option value="">-- Choose a Service Category --</option>
-                    {serviceCategories.map((cat) => (
-                      <option key={cat.id} value={cat.title}>
-                        {cat.title} ({cat.count} services)
-                      </option>
-                    ))}
-                    <option value="General Corporate Advisory">
-                      General Corporate Advisory / Multiple Services
-                    </option>
+                    <option value="">-- Choose a Service --</option>
+                    <option value="Company Incorporation">Company Incorporation</option>
+                    <option value="LLP Registration">LLP Registration</option>
+                    <option value="Proprietorship / Partnership">Proprietorship / Partnership</option>
+                    <option value="GST Registration">GST Registration</option>
+                    <option value="GST Return Filing">GST Return Filing</option>
+                    <option value="Income Tax Filing (ITR)">Income Tax Filing (ITR)</option>
+                    <option value="TDS / TCS Compliance">TDS / TCS Compliance</option>
+                    <option value="Accounting & Bookkeeping">Accounting &amp; Bookkeeping</option>
+                    <option value="Payroll Management">Payroll Management</option>
+                    <option value="Trademark Registration">Trademark Registration</option>
+                    <option value="FSSAI / Food License">FSSAI / Food License</option>
+                    <option value="Startup India / MSME (Udyam)">Startup India / MSME (Udyam)</option>
+                    <option value="ROC & MCA Compliance">ROC &amp; MCA Compliance</option>
+                    <option value="Other Business / Tax Service">Other Business / Tax Service</option>
                   </Select>
 
                   <div className="flex flex-col gap-1.5">
@@ -265,7 +275,7 @@ export default function ConsultationSection() {
                     ) : (
                       <>
                         <span>Submit Free Inquiry</span>
-                        <Send className="w-4 h-4" />
+                        <ArrowRight className="w-4 h-4" />
                       </>
                     )}
                   </button>

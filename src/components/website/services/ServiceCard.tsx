@@ -43,6 +43,28 @@ export function ServiceCard({ category, className }: ServiceCardProps) {
         <p className="text-[0.8125rem] text-brand-muted leading-relaxed mb-4">
           {category.description}
         </p>
+
+        {/* Category Services Preview */}
+        {category.services && category.services.length > 0 && (
+          <ul className="space-y-1.5 mb-5 pt-3 border-t border-slate-100">
+            {category.services.slice(0, 4).map((s) => (
+              <li key={s.slug}>
+                <Link
+                  href={`/services/${s.slug}`}
+                  className="text-xs text-slate-600 hover:text-brand-purple flex items-center gap-1.5 group/srv transition-colors"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-purple/60 group-hover/srv:bg-brand-purple flex-shrink-0" />
+                  <span className="line-clamp-1 group-hover/srv:underline">{s.title}</span>
+                </Link>
+              </li>
+            ))}
+            {category.services.length > 4 && (
+              <li className="text-[11px] font-medium text-brand-purple pt-0.5">
+                +{category.services.length - 4} more services
+              </li>
+            )}
+          </ul>
+        )}
       </div>
 
       <div className="pt-4 border-t border-slate-100/90">

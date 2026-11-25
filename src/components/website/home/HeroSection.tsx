@@ -61,9 +61,9 @@ export default function HeroSection() {
   };
 
   const trendingTags = [
-    { label: "Pvt Ltd Setup", href: "/services/company-incorporation" },
-    { label: "GST Monthly Return", href: "/services/gst-returns" },
-    { label: "ITR Filing", href: "/services/tax-compliance-support" },
+    { label: "GST Registration", href: "/services/gst-registration" },
+    { label: "Company Incorporation", href: "/services/company-incorporation" },
+    { label: "Income Tax Filing", href: "/services/tax-compliance-support" },
     { label: "Trademark Registration", href: "/services/statutory-registrations" },
   ];
 
@@ -71,31 +71,31 @@ export default function HeroSection() {
   const heroBoxes = [
     {
       title: "Business Setup",
-      subtitle: "Pvt Ltd, LLP, OPC",
+      subtitle: "Start Your Business",
       href: "/services/category/business-setup",
       icon: Building2,
     },
     {
       title: "GST Services",
-      subtitle: "Returns & LUT",
+      subtitle: "Stay GST Compliant",
       href: "/services/category/gst",
       icon: FileSpreadsheet,
     },
     {
       title: "Income Tax",
-      subtitle: "ITR, TDS & Valuation",
+      subtitle: "File, Plan & Save",
       href: "/services/category/income-tax-records",
       icon: ReceiptText,
     },
     {
       title: "Accounting",
-      subtitle: "Bookkeeping & Payroll",
+      subtitle: "Bookkeeping & Reports",
       href: "/services/category/accounting-records",
       icon: Calculator,
     },
     {
       title: "Special Licenses",
-      subtitle: "FSSAI, TM & Udyam",
+      subtitle: "Protect Your Business",
       href: "/services/category/special-registrations",
       icon: ShieldCheck,
     },
@@ -199,13 +199,7 @@ export default function HeroSection() {
 
       <div className="relative z-10 max-w-content mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          {/* Top Pill / Badge */}
-          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-slate-50/90 border border-slate-200/80 text-[11px] sm:text-xs font-semibold tracking-wide text-brand-muted mb-6 shadow-xs">
 
-            <span>
-              INDIA&apos;S GROWING ONLINE TAX & COMPLIANCE PLATFORM | 100% Paperless
-            </span>
-          </div>
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.1rem] font-semibold tracking-tight text-brand-text leading-[1.14] mb-6">
@@ -216,9 +210,12 @@ export default function HeroSection() {
           </h1>
 
           {/* Description */}
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal max-w-2xl mx-auto mb-10">
-            From Company Incorporation and GST filings to Annual Accounting and Trademark protection - fast, 100% online, backed by expert Chartered Accountants and Legal Consultants.
-          </p>
+          <div className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal max-w-2xl mx-auto mb-10 space-y-3">
+            <p>
+              From company incorporation and GST registration to income tax filing, accounting and regulatory compliance, Mithi Tax provides end-to-end business solutions with professional guidance and reliable support.
+            </p>
+
+          </div>
 
           {/* Wide Search & Consultation Bar */}
           <div
@@ -227,29 +224,27 @@ export default function HeroSection() {
           >
             <form
               onSubmit={handleConsultationSubmit}
-              className="relative flex flex-col sm:flex-row items-stretch sm:items-center bg-white rounded-2xl border border-slate-200/90 shadow-[0_8px_30px_rgba(23,21,45,0.06)] hover:border-slate-300 focus-within:border-brand-purple/50 focus-within:ring-4 focus-within:ring-brand-purple/10 transition-all p-2 sm:p-2.5 gap-2"
+              className="relative flex items-center bg-white rounded-full border border-slate-200/90 shadow-[0_6px_24px_rgba(23,21,45,0.06)] hover:border-slate-300 focus-within:border-brand-purple/50 focus-within:ring-4 focus-within:ring-brand-purple/10 transition-all p-1.5 sm:p-2 pl-3.5 sm:pl-5 gap-2"
             >
-              <div className="flex items-center flex-1 px-3 py-1 gap-3">
-                <Search className="w-5 h-5 text-brand-purple flex-shrink-0" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => {
-                    setSearchQuery(e.target.value);
-                    setIsOpen(true);
-                  }}
-                  onFocus={() => setIsOpen(true)}
-                  placeholder="What service do you need today? (e.g. Pvt Ltd, GST Return, FSSAI, ITR...)"
-                  className="w-full text-xs sm:text-sm text-brand-text placeholder:text-slate-400 bg-transparent focus:outline-none font-medium"
-                />
-              </div>
+              <Search className="w-4 h-4 sm:w-5 sm:h-5 text-brand-purple flex-shrink-0" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setIsOpen(true);
+                }}
+                onFocus={() => setIsOpen(true)}
+                placeholder="Search services (e.g. GST Registration, Company Incorporation...)"
+                className="w-full text-xs sm:text-sm text-brand-text placeholder:text-slate-400 bg-transparent focus:outline-none font-medium truncate"
+              />
 
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-brand-lime text-brand-text text-xs sm:text-sm font-semibold hover:bg-[#a6d812] active:scale-[0.98] transition-all flex-shrink-0 cursor-pointer shadow-sm hover:shadow"
+                className="inline-flex items-center justify-center gap-1.5 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-brand-lime text-brand-text text-xs sm:text-sm font-semibold hover:bg-[#a6d812] active:scale-[0.98] transition-all flex-shrink-0 cursor-pointer shadow-sm hover:shadow"
               >
-                <span>Get Free Consultation</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>Explore Services</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </form>
 
@@ -297,15 +292,15 @@ export default function HeroSection() {
             ))}
           </div>
 
-          {/* 5 Clickable Boxes in 1 Row: Guaranteed Single Line Title & Uniform Brand Colors */}
-          <div className="w-full max-w-5xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-4">
+          {/* 5 Clickable Boxes: Horizontal Slider on Mobile, 5-Column Grid on Desktop */}
+          <div className="w-full max-w-5xl flex sm:grid sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 overflow-x-auto sm:overflow-visible no-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory justify-start sm:justify-center pt-2 pb-2 px-4 sm:px-0">
             {heroBoxes.map((box) => {
               const Icon = box.icon;
               return (
                 <Link
                   key={box.title}
                   href={box.href}
-                  className="group relative flex flex-col items-center text-center px-3 py-5 sm:p-5 rounded-2xl bg-gradient-to-b from-white to-[#FAF9FD] border border-slate-200/90 shadow-[0_2px_12px_rgba(23,21,45,0.03)] hover:shadow-[0_14px_30px_-4px_rgba(113,10,198,0.12)] hover:-translate-y-1 transition-all duration-300"
+                  className="group relative flex flex-col items-center text-center px-4 py-5 sm:p-5 rounded-2xl bg-gradient-to-b from-white to-[#FAF9FD] border border-slate-200/90 shadow-[0_2px_12px_rgba(23,21,45,0.03)] hover:shadow-[0_14px_30px_-4px_rgba(113,10,198,0.12)] hover:-translate-y-1 transition-all duration-300 w-[150px] sm:w-auto flex-shrink-0 snap-start"
                 >
                   {/* Soft backlight glow effect in background on hover */}
                   <div

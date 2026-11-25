@@ -6,19 +6,22 @@ import { insightArticles } from "@/lib/constants";
 
 export default function InsightsSection() {
   return (
-    <section className="py-12 md:py-18 bg-gradient-to-b from-[#F7F8FD] via-[#F4F5FA] to-white">
+    <section className="pt-10 pb-6 sm:py-12 md:py-18 bg-gradient-to-b from-[#F7F8FD] via-[#F4F5FA] to-white">
       <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header: Clean sans-serif typography */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 md:mb-12">
-          <div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[2rem] font-semibold text-brand-text tracking-tight leading-snug">
+          <div className="max-w-2xl">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[2rem] font-semibold text-brand-text tracking-tight leading-snug mb-2">
               Latest Insights &amp; Updates
             </h2>
+            <p className="text-sm sm:text-[0.9375rem] text-brand-muted leading-relaxed font-normal">
+              Explore practical guides, expert insights and important updates on business registration, taxation, accounting and regulatory compliance.
+            </p>
           </div>
 
           <Link
             href="/insights"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-brand-purple self-start sm:self-auto group"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-brand-purple self-start sm:self-auto group flex-shrink-0"
           >
             <span className="hover:underline">View All Insights</span>
             <span className="w-6 h-6 rounded-full bg-brand-lime text-brand-text flex items-center justify-center transition-all duration-300 group-hover:translate-x-0.5 group-hover:shadow-[0_2px_8px_rgba(180,231,23,0.4)]">

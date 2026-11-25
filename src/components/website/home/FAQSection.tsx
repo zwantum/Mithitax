@@ -23,7 +23,7 @@ export default function FAQSection() {
           </h2>
 
           <p className="text-sm sm:text-[0.9375rem] text-brand-muted leading-relaxed font-normal max-w-xl mx-auto">
-            Find answers to common questions about our services, process and compliance support.
+            Find answers to common questions about business registration, GST services, taxation, accounting and compliance support.
           </p>
         </div>
 

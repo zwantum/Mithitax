@@ -15,21 +15,24 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const services = [
-    { label: "Business Registration", href: "/services/company-incorporation" },
-    { label: "GST Filing & Registration", href: "/services/gst-returns" },
-    { label: "Income Tax Filing", href: "/services/tax-compliance-support" },
+    { label: "Company Incorporation", href: "/services/company-incorporation" },
+    { label: "LLP Company Registration", href: "/services/llp-registration" },
+    { label: "Proprietorship / Partnership Setup", href: "/services/proprietorship-partnership" },
+    { label: "NGO / Non-Profit Registration", href: "/services/ngo-registration" },
+    { label: "GST Registration", href: "/services/gst-registration" },
+    { label: "GST Return Filing", href: "/services/gst-returns" },
     { label: "Accounting & Bookkeeping", href: "/services/accounting-bookkeeping" },
-    { label: "Udyam/MSME Registration", href: "/services/statutory-registrations" },
-    { label: "Digital Signature Services", href: "/services/category/special-registrations" },
+    { label: "PAN & TAN Application", href: "/services/pan-tan-application" },
   ];
 
   const quickLinks = [
-    { label: "Who we are", href: "/about" },
-    { label: "Contact Us", href: "/contact" },
-    { label: "Services overview", href: "/services" },
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "All Services", href: "/services" },
     { label: "Insights", href: "/insights" },
-    { label: "Team", href: "/about#team" },
-    { label: "Terms & Conditions", href: "/terms-and-conditions" },
+    { label: "Business Calculators", href: "/calculators" },
+    { label: "Contact Us", href: "/contact" },
+    { label: "FAQs", href: "/#faq" },
   ];
 
   const socialLinks = [
@@ -87,7 +90,7 @@ export default function Footer() {
               </Link>
 
               <p className="text-xs sm:text-sm text-brand-muted leading-relaxed font-normal mb-7 max-w-sm">
-                A professional financial and compliance consultancy empowering businesses, startups, and individuals across India.
+                Mithi Tax provides professional business registration, taxation, accounting and compliance consultancy services to help entrepreneurs, startups and businesses manage their financial and legal responsibilities with confidence.
               </p>
 
               {/* Upgraded Social Media Icons with Distinctive Branded Hover States */}
