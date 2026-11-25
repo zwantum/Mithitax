@@ -16,8 +16,13 @@ import { consultationSchema, ConsultationFormValues } from "@/lib/validations";
 import { serviceCategories, siteConfig } from "@/lib/constants";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
-export default function ConsultationSection() {
+export default function ConsultationSection({
+  className,
+}: {
+  className?: string;
+}) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -58,7 +63,13 @@ export default function ConsultationSection() {
   };
 
   return (
-    <section id="consultation" className="pt-4 pb-12 sm:pt-10 sm:pb-16 md:py-20 bg-white relative overflow-hidden">
+    <section
+      id="consultation"
+      className={cn(
+        "pt-4 pb-12 sm:pt-10 sm:pb-16 md:py-20 bg-white relative overflow-hidden",
+        className
+      )}
+    >
       {/* Subtle Ambient Background Orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div

@@ -1,108 +1,89 @@
 import React from "react";
-import Link from "next/link";
-import { Calculator, Receipt, Percent, ArrowRight } from "lucide-react";
-import { calculatorsList } from "@/lib/constants";
 import CalculatorsSection from "@/components/website/home/CalculatorsSection";
 
 export const metadata = {
   title: "Free Business Calculators | GST, Income Tax & TDS | Mithi Tax",
   description:
-    "Free interactive online business tax tools: calculate GST, compare Old vs New Income Tax regimes, and estimate TDS deductions accurately.",
-};
-
-const icons = {
-  "gst-calculator": Calculator,
-  "income-tax-calculator": Receipt,
-  "tds-calculator": Percent,
+    "Use our free online business and tax calculators to estimate GST, income tax, TDS deductions, HRA exemptions, startup incorporation costs, and gratuity.",
 };
 
 export default function CalculatorsPage() {
   return (
-    <div className="py-14 sm:py-20 bg-white">
-      <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-brand-lime" />
-            <span className="text-xs font-semibold tracking-wider text-brand-muted uppercase">
-              ONLINE TOOLS
-            </span>
+    <div className="bg-white">
+      {/* 1. Hero Header Section (Matches Home, About, Insights & Contact ambient waves) */}
+      <section className="relative overflow-hidden pt-8 pb-8 sm:pt-12 sm:pb-12 md:pt-16 md:pb-14 bg-white">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[440px] pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse 65% 50% at 50% 15%, rgba(113, 10, 198, 0.08) 0%, rgba(180, 231, 23, 0.04) 40%, transparent 75%)",
+            }}
+            aria-hidden="true"
+          />
+          <svg
+            className="absolute top-0 left-0 w-[340px] sm:w-[460px] lg:w-[580px] h-full pointer-events-none opacity-50 select-none"
+            viewBox="0 0 640 820"
+            fill="none"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="calc-left-grad" x1="0%" y1="0%" x2="100%" y2="80%">
+                <stop offset="0%" stopColor="#710ac6" stopOpacity="0.16" />
+                <stop offset="50%" stopColor="#8c1fe3" stopOpacity="0.08" />
+                <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M-50 -20 C 180 80, 360 220, 320 440 C 280 620, 110 740, -50 820 Z"
+              fill="url(#calc-left-grad)"
+            />
+          </svg>
+          <svg
+            className="absolute top-0 right-0 w-[340px] sm:w-[460px] lg:w-[580px] h-full pointer-events-none opacity-50 select-none"
+            viewBox="0 0 640 820"
+            fill="none"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="calc-right-grad" x1="100%" y1="0%" x2="0%" y2="90%">
+                <stop offset="0%" stopColor="#B4E717" stopOpacity="0.2" />
+                <stop offset="50%" stopColor="#ccf24b" stopOpacity="0.08" />
+                <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M690 -30 C 470 80, 290 240, 340 460 C 390 640, 550 740, 690 820 Z"
+              fill="url(#calc-right-grad)"
+            />
+          </svg>
+        </div>
+
+        <div className="relative z-10 max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex flex-col items-center mb-4">
+              <span className="text-xs font-semibold tracking-wider text-brand-purple uppercase">
+                ONLINE TOOLS
+              </span>
+              <div className="w-8 h-[2px] bg-brand-lime mt-1.5 rounded-full" />
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl lg:text-[3.3rem] font-semibold tracking-tight text-brand-text leading-[1.2] mb-5">
+              Smart Financial &amp;{" "}
+              <span className="text-brand-purple">Tax Calculators</span>
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Use our free online business and tax calculators to estimate taxes, understand financial obligations, and make more informed business decisions.
+            </p>
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl font-semibold text-brand-text tracking-tight mb-4">
-            Interactive Business Calculators
-          </h1>
-          <p className="text-base sm:text-lg text-brand-muted leading-relaxed font-normal">
-            Dedicated statutory calculation modules tailored for Indian entrepreneurs, SMEs, and finance teams.
-          </p>
         </div>
+      </section>
 
-        {/* Dedicated Calculator Navigation Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16">
-          <Link
-            href="/calculators/gst"
-            className="p-6 rounded-2xl bg-brand-alt border border-brand-border hover:border-brand-purple/40 hover:shadow-card transition flex flex-col justify-between group"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-xl bg-brand-purple-subtle flex items-center justify-center text-brand-purple mb-4">
-                <Calculator className="w-5 h-5" />
-              </div>
-              <h3 className="font-serif text-xl font-semibold text-brand-text mb-2 group-hover:text-brand-purple transition-colors">
-                GST Calculator
-              </h3>
-              <p className="text-xs text-brand-muted">
-                Compute intra-state and inter-state tax components across 5%, 12%, 18%, and 28% slabs.
-              </p>
-            </div>
-            <div className="mt-6 pt-3 border-t border-brand-border/60 flex items-center text-xs font-semibold text-brand-purple gap-1">
-              <span>Open Dedicated Tool</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </Link>
-
-          <Link
-            href="/calculators/income-tax"
-            className="p-6 rounded-2xl bg-brand-alt border border-brand-border hover:border-brand-purple/40 hover:shadow-card transition flex flex-col justify-between group"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-xl bg-brand-purple-subtle flex items-center justify-center text-brand-purple mb-4">
-                <Receipt className="w-5 h-5" />
-              </div>
-              <h3 className="font-serif text-xl font-semibold text-brand-text mb-2 group-hover:text-brand-purple transition-colors">
-                Income Tax Calculator
-              </h3>
-              <p className="text-xs text-brand-muted">
-                Compare liability under the revised New Tax Regime with ₹75,000 standard deduction and 87A rebate.
-              </p>
-            </div>
-            <div className="mt-6 pt-3 border-t border-brand-border/60 flex items-center text-xs font-semibold text-brand-purple gap-1">
-              <span>Open Dedicated Tool</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </Link>
-
-          <Link
-            href="/calculators/tds"
-            className="p-6 rounded-2xl bg-brand-alt border border-brand-border hover:border-brand-purple/40 hover:shadow-card transition flex flex-col justify-between group"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-xl bg-brand-purple-subtle flex items-center justify-center text-brand-purple mb-4">
-                <Percent className="w-5 h-5" />
-              </div>
-              <h3 className="font-serif text-xl font-semibold text-brand-text mb-2 group-hover:text-brand-purple transition-colors">
-                TDS Calculator
-              </h3>
-              <p className="text-xs text-brand-muted">
-                Calculate withholding taxes for professional services (194J), rent (194I), and contracts (194C).
-              </p>
-            </div>
-            <div className="mt-6 pt-3 border-t border-brand-border/60 flex items-center text-xs font-semibold text-brand-purple gap-1">
-              <span>Open Dedicated Tool</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </Link>
-        </div>
-      </div>
-
-      <CalculatorsSection />
+      {/* 2. Quick Interactive Modal Calculators (6 Tools) */}
+      <CalculatorsSection showExploreCta={false} showHeader={false} />
     </div>
   );
 }

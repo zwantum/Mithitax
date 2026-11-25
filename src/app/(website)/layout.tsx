@@ -10,7 +10,7 @@ export default function WebsiteLayout({
   return (
     <>
       <Header />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 pt-[65px]">{children}</main>
       <Footer />
     </>
   );

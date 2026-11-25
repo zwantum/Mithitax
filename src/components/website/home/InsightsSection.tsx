@@ -32,7 +32,7 @@ export default function InsightsSection() {
 
         {/* Three Blog Cards with Elevated SaaS Depth */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {insightArticles.map((article) => (
+          {insightArticles.slice(0, 3).map((article) => (
             <article
               key={article.id}
               className="group flex flex-col bg-gradient-to-b from-white to-[#FAF9FD] rounded-2xl border border-slate-200/90 overflow-hidden shadow-[0_4px_16px_rgba(23,21,45,0.03)] hover:shadow-[0_16px_36px_-6px_rgba(113,10,198,0.12),0_4px_12px_rgba(23,21,45,0.04)] hover:border-brand-purple/40 hover:-translate-y-1 transition-all duration-300"

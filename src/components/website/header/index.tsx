@@ -8,16 +8,21 @@ import {
   ChevronDown,
   Menu,
   X,
-  Phone,
   Building2,
   FileSpreadsheet,
   ReceiptText,
   ShieldCheck,
   Scale,
   ArrowRight,
+  Home,
+  Users,
+  Briefcase,
+  BookOpen,
+  Calculator,
+  Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { serviceCategories, siteConfig } from "@/lib/constants";
+import { serviceCategories } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 const categoryIcons = {
@@ -33,6 +38,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [openMobileCategory, setOpenMobileCategory] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -51,10 +57,10 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 w-full bg-white transition-all duration-200 border-b",
+        "fixed top-0 left-0 right-0 z-50 w-full bg-white transition-shadow duration-200 border-b py-3 md:py-3.5",
         isScrolled
-          ? "border-brand-border shadow-subtle py-3"
-          : "border-brand-border/70 py-4"
+          ? "border-brand-border shadow-subtle"
+          : "border-brand-border/70"
       )}
     >
       <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
@@ -203,14 +209,14 @@ export default function Header() {
           </div>
 
           {/* Mobile Hamburger Button */}
-          <div className="flex md:hidden items-center gap-3">
+          <div className="flex md:hidden items-center gap-2.5">
             <Button
               href="/contact"
               variant="lime"
               size="sm"
-              className="text-xs px-3 py-1.5 font-semibold"
+              className="text-xs px-3.5 py-1.5 font-semibold whitespace-nowrap"
             >
-              Consult
+              Contact Us
             </Button>
             <button
               type="button"
@@ -229,102 +235,149 @@ export default function Header() {
 
         {/* Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-3 pt-3 pb-6 border-t border-brand-border animate-in fade-in slide-in-from-top-1">
-            <div className="flex flex-col gap-2">
+          <div className="md:hidden mt-3 pt-3 pb-5 border-t border-brand-border max-h-[78vh] overflow-y-auto animate-in fade-in slide-in-from-top-1">
+            <div className="flex flex-col gap-1">
               <Link
                 href="/"
-                className="px-3 py-2 text-sm font-medium rounded-lg hover:bg-brand-alt text-brand-text"
+                className={cn(
+                  "flex items-center gap-3 px-3 py-2.5 text-[15px] font-medium rounded-xl transition-colors",
+                  pathname === "/"
+                    ? "bg-brand-purple-light/70 text-brand-purple font-semibold"
+                    : "hover:bg-brand-alt text-brand-text"
+                )}
               >
-                Home
+                <Home className="w-4 h-4 text-brand-purple flex-shrink-0" />
+                <span>Home</span>
               </Link>
               <Link
                 href="/about"
-                className="px-3 py-2 text-sm font-medium rounded-lg hover:bg-brand-alt text-brand-text"
+                className={cn(
+                  "flex items-center gap-3 px-3 py-2.5 text-[15px] font-medium rounded-xl transition-colors",
+                  pathname === "/about"
+                    ? "bg-brand-purple-light/70 text-brand-purple font-semibold"
+                    : "hover:bg-brand-alt text-brand-text"
+                )}
               >
-                About Us
+                <Users className="w-4 h-4 text-brand-purple flex-shrink-0" />
+                <span>About Us</span>
               </Link>
 
-              {/* Mobile Services Accordion */}
+              {/* Mobile Services Nested Accordion (No counts, clean category-by-category expand) */}
               <div>
                 <button
                   type="button"
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg hover:bg-brand-alt text-brand-text"
+                  className={cn(
+                    "w-full flex items-center justify-between px-3 py-2.5 text-[15px] font-medium rounded-xl transition-colors",
+                    mobileServicesOpen
+                      ? "bg-brand-alt text-brand-purple font-semibold"
+                      : "hover:bg-brand-alt text-brand-text"
+                  )}
                 >
-                  <span>Services</span>
+                  <div className="flex items-center gap-3">
+                    <Briefcase className="w-4 h-4 text-brand-purple flex-shrink-0" />
+                    <span>Services</span>
+                  </div>
                   <ChevronDown
                     className={cn(
-                      "w-4 h-4 transition-transform",
-                      mobileServicesOpen ? "rotate-180" : ""
+                      "w-4 h-4 transition-transform duration-200",
+                      mobileServicesOpen ? "rotate-180 text-brand-purple" : ""
                     )}
                   />
                 </button>
                 {mobileServicesOpen && (
-                  <div className="pl-3 pr-2 py-2 flex flex-col gap-3 bg-brand-alt/60 rounded-xl my-1 border border-brand-border/60">
-                    {serviceCategories.map((cat) => (
-                      <div key={cat.id} className="space-y-1">
-                        <div className="py-1 px-2 text-xs font-bold text-brand-text flex items-center justify-between">
-                          <span>{cat.title}</span>
-                          <span className="text-[10px] text-brand-purple bg-brand-purple-subtle px-1.5 py-0.5 rounded-full font-semibold">
-                            {cat.count}
-                          </span>
+                  <div className="pl-3 ml-3 border-l border-slate-200/80 my-1 flex flex-col divide-y divide-slate-100">
+                    {serviceCategories.map((cat) => {
+                      const Icon =
+                        categoryIcons[cat.id as keyof typeof categoryIcons] ||
+                        Building2;
+                      const isCatOpen = openMobileCategory === cat.id;
+
+                      return (
+                        <div key={cat.id} className="py-0.5">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setOpenMobileCategory(isCatOpen ? null : cat.id)
+                            }
+                            className="w-full flex items-center justify-between px-2 py-2.5 text-left text-[13.5px] font-medium text-brand-text hover:text-brand-purple transition-colors"
+                          >
+                            <div className="flex items-center gap-2.5">
+                              <Icon className="w-4 h-4 text-brand-purple flex-shrink-0" />
+                              <span>{cat.title}</span>
+                            </div>
+                            <ChevronDown
+                              className={cn(
+                                "w-3.5 h-3.5 text-slate-400 transition-transform duration-200 flex-shrink-0",
+                                isCatOpen ? "rotate-180 text-brand-purple" : ""
+                              )}
+                            />
+                          </button>
+
+                          {isCatOpen && (
+                            <div className="pl-6 pb-2 pt-0.5 flex flex-col gap-1">
+                              {cat.services.map((srv) => (
+                                <Link
+                                  key={srv.slug}
+                                  href={`/services/${srv.slug}`}
+                                  className="text-[13px] text-brand-muted hover:text-brand-purple py-1 transition-colors leading-snug"
+                                >
+                                  {srv.title}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
                         </div>
-                        <div className="pl-3 flex flex-col gap-1 border-l border-brand-border/80 ml-2">
-                          {cat.services.map((srv) => (
-                            <Link
-                              key={srv.slug}
-                              href={`/services/${srv.slug}`}
-                              className="text-[11px] text-brand-muted hover:text-brand-purple py-0.5"
-                            >
-                              {srv.title}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                    <Link
-                      href="/services"
-                      className="py-1.5 px-2 text-xs font-semibold text-brand-purple border-t border-brand-border/60 pt-2 flex items-center justify-between"
-                    >
-                      <span>View All Services Directory →</span>
-                    </Link>
+                      );
+                    })}
                   </div>
                 )}
               </div>
 
               <Link
                 href="/insights"
-                className="px-3 py-2 text-sm font-medium rounded-lg hover:bg-brand-alt text-brand-text"
+                className={cn(
+                  "flex items-center gap-3 px-3 py-2.5 text-[15px] font-medium rounded-xl transition-colors",
+                  pathname.startsWith("/insights")
+                    ? "bg-brand-purple-light/70 text-brand-purple font-semibold"
+                    : "hover:bg-brand-alt text-brand-text"
+                )}
               >
-                Insights
+                <BookOpen className="w-4 h-4 text-brand-purple flex-shrink-0" />
+                <span>Insights</span>
               </Link>
               <Link
                 href="/calculators"
-                className="px-3 py-2 text-sm font-medium rounded-lg hover:bg-brand-alt text-brand-text"
+                className={cn(
+                  "flex items-center gap-3 px-3 py-2.5 text-[15px] font-medium rounded-xl transition-colors",
+                  pathname.startsWith("/calculators")
+                    ? "bg-brand-purple-light/70 text-brand-purple font-semibold"
+                    : "hover:bg-brand-alt text-brand-text"
+                )}
               >
-                Calculators
+                <Calculator className="w-4 h-4 text-brand-purple flex-shrink-0" />
+                <span>Calculators</span>
               </Link>
               <Link
                 href="/contact"
-                className="px-3 py-2 text-sm font-medium rounded-lg hover:bg-brand-alt text-brand-text"
+                className={cn(
+                  "flex items-center gap-3 px-3 py-2.5 text-[15px] font-medium rounded-xl transition-colors",
+                  pathname === "/contact"
+                    ? "bg-brand-purple-light/70 text-brand-purple font-semibold"
+                    : "hover:bg-brand-alt text-brand-text"
+                )}
               >
-                Contact
+                <Mail className="w-4 h-4 text-brand-purple flex-shrink-0" />
+                <span>Contact</span>
               </Link>
 
-              <div className="pt-4 mt-2 border-t border-brand-border flex flex-col gap-3">
-                <a
-                  href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
-                  className="flex items-center gap-2 px-3 text-xs font-medium text-brand-muted"
-                >
-                  <Phone className="w-3.5 h-3.5 text-brand-purple" />
-                  <span>{siteConfig.phone}</span>
-                </a>
+              <div className="pt-4 mt-2 border-t border-brand-border">
                 <Button
                   href="/contact"
                   variant="lime"
                   size="md"
                   withArrow
-                  className="w-full justify-center font-semibold shadow-[0_2px_10px_rgba(180,231,23,0.25)]"
+                  className="w-full justify-center py-3 font-semibold shadow-[0_2px_10px_rgba(180,231,23,0.25)]"
                 >
                   Book a Consultation
                 </Button>

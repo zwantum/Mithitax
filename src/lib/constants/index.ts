@@ -459,6 +459,51 @@ export const insightArticles: InsightArticle[] = [
     author: "CS Vikram Singhania, Corporate Secretary",
     publishedAt: "2026-10-28",
   },
+  {
+    id: "essential-bookkeeping-practices-smes",
+    slug: "essential-bookkeeping-practices-smes",
+    title: "Essential Bookkeeping & Accounting Practices for Growing SMEs",
+    category: "Accounting",
+    categorySlug: "accounting",
+    readTime: "5 min read",
+    image: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=800&q=80",
+    summary:
+      "Discover how structured bookkeeping, bank reconciliations, and monthly financial statements help small businesses stay audit-ready and improve cash flow visibility.",
+    content: "Consistent bookkeeping is the backbone of healthy business finance, enabling founders to track profitability, manage receivables, and prepare accurate statutory reports...",
+    date: "October 2026",
+    author: "Mithi Tax Advisory Team",
+    publishedAt: "2026-10-18",
+  },
+  {
+    id: "tds-return-filing-reconciliation-guide",
+    slug: "tds-return-filing-reconciliation-guide",
+    title: "Understanding TDS Return Filing & Form 26AS Reconciliation",
+    category: "Tax & Compliance",
+    categorySlug: "tax-compliance",
+    readTime: "6 min read",
+    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80",
+    summary:
+      "Learn how quarterly TDS and TCS filings, challan verification, and timely reconciliation prevent interest penalties and keep your business tax-compliant.",
+    content: "Tax Deducted at Source (TDS) compliance requires timely deduction, monthly challan deposit, and quarterly return filing in Forms 24Q, 26Q, and 27Q...",
+    date: "October 2026",
+    author: "CA Rajesh Varma, Tax Lead",
+    publishedAt: "2026-10-10",
+  },
+  {
+    id: "msme-udyam-trademark-benefits-startups",
+    slug: "msme-udyam-trademark-benefits-startups",
+    title: "Why MSME Udyam & Trademark Registration Matter for Startups",
+    category: "Business Setup",
+    categorySlug: "business-setup",
+    readTime: "5 min read",
+    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
+    summary:
+      "Explore the key government subsidies, credit benefits, and brand protection advantages of securing Udyam MSME and Trademark registration early.",
+    content: "Protecting your brand identity while unlocking government MSME benefits gives early-stage businesses a strong legal and financial foundation...",
+    date: "September 2026",
+    author: "Ananya Deshmukh, Senior Tax Consultant",
+    publishedAt: "2026-09-25",
+  },
 ];
 
 export const faqItems: FAQItem[] = [
