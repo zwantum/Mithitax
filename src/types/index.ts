@@ -6,6 +6,11 @@ export interface ServiceItem {
   deliverables?: string[];
   timelineDays?: number;
   startingPriceINR?: number;
+  h1?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  primaryKeyword?: string;
+  secondaryKeywords?: string[];
 }
 
 export interface ServiceCategory {
@@ -16,6 +21,10 @@ export interface ServiceCategory {
   description: string;
   iconName: string;
   services: ServiceItem[];
+  metaTitle?: string;
+  metaDescription?: string;
+  primaryKeyword?: string;
+  secondaryKeywords?: string[];
 }
 
 export interface ClientLogo {

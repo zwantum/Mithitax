@@ -9,7 +9,6 @@ import {
   CheckCircle2,
   MessageSquare,
   FileText,
-  Sparkles,
   ExternalLink,
 } from "lucide-react";
 import { siteConfig } from "@/lib/constants";
@@ -39,7 +38,7 @@ const responseSteps = [
   },
   {
     step: "03",
-    icon: Sparkles,
+    icon: CheckCircle2,
     title: "Smooth Execution",
     description:
       "Once documents are shared, we handle preparation, verification, and filing while keeping you updated at every step.",

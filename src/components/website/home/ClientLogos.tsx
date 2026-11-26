@@ -166,11 +166,11 @@ const trustedBrands = [
 const getSlotVisuals = (distance: number) => {
   switch (distance) {
     case 0:
-      // Active center hero card: large, dark slate, large icon, no box shadow
+      // Active center hero card: large, dark slate, balanced icon padding on mobile
       return {
         cardClass:
           "bg-slate-900 border border-slate-800 shadow-none rounded-2xl sm:rounded-3xl",
-        iconClass: "w-13 h-13 sm:w-16 sm:h-16 md:w-20 md:h-20",
+        iconClass: "w-11 h-11 sm:w-16 sm:h-16 md:w-20 md:h-20",
         isCenter: true,
       };
     case 1:
@@ -178,7 +178,7 @@ const getSlotVisuals = (distance: number) => {
       return {
         cardClass:
           "bg-white border border-slate-200/80 shadow-[0_4px_16px_rgba(23,23,42,0.04)] rounded-2xl sm:rounded-3xl",
-        iconClass: "w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14",
+        iconClass: "w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14",
         isCenter: false,
       };
     case 2:
@@ -285,25 +285,25 @@ export default function ClientLogos() {
 
         @media (max-width: 639px) {
           .carousel-stage {
-            --slot-w-0: 5rem;
-            --slot-h-0: 5rem;
-            --slot-w-1: 4.25rem;
-            --slot-h-1: 4.25rem;
-            --slot-w-2: 3.75rem;
-            --slot-h-2: 3.75rem;
-            --slot-w-3: 3.25rem;
-            --slot-h-3: 3.25rem;
-            --slot-w-4: 2.75rem;
-            --slot-h-4: 2.75rem;
-            --slot-w-5: 2.25rem;
-            --slot-h-5: 2.25rem;
+            --slot-w-0: 5.75rem;
+            --slot-h-0: 5.75rem;
+            --slot-w-1: 4rem;
+            --slot-h-1: 4rem;
+            --slot-w-2: 3.35rem;
+            --slot-h-2: 3.35rem;
+            --slot-w-3: 2.85rem;
+            --slot-h-3: 2.85rem;
+            --slot-w-4: 2.4rem;
+            --slot-h-4: 2.4rem;
+            --slot-w-5: 2rem;
+            --slot-h-5: 2rem;
 
             --slot-x-0: 0px;
-            --slot-x-1: 82px;
-            --slot-x-2: 154px;
-            --slot-x-3: 218px;
-            --slot-x-4: 274px;
-            --slot-x-5: 330px;
+            --slot-x-1: 86px;
+            --slot-x-2: 152px;
+            --slot-x-3: 210px;
+            --slot-x-4: 262px;
+            --slot-x-5: 314px;
           }
         }
       `}</style>
